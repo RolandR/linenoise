@@ -14,7 +14,7 @@ canvas.width = width;
 var seed = Math.random();
 noise.seed(seed);
 
-var maxLife = 200;
+var maxLife = 100;
 var lineCount = 10000;
 var linesAdded = Math.floor(lineCount/maxLife);
 
@@ -26,7 +26,7 @@ var offset = 0;
 lines = lines.map(Math.random);
 
 var pos = 0;
-var posIncrement = 0.001;
+var posIncrement = 0.0001;
 
 var sin = Math.sin;
 var cos = Math.cos;
@@ -84,7 +84,7 @@ function render(){
 			continue;
 		}
 		
-		res = ((width+height)/2)*1.5;
+		res = ((width+height)/2)*10;
 		var factor = 0.5;
 		var factorFactor = 0.9;
 		value = 0;
@@ -123,7 +123,7 @@ function render(){
 		context.moveTo(x-dx, y-dy);
 		context.lineTo(x+dx, y+dy);
 		
-		var speed = 2;
+		var speed = 0.7;
 		
 		lines[i]   += s / width * speed;
 		lines[i+1] += c / height * speed;
