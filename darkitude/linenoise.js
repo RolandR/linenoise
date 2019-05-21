@@ -15,7 +15,7 @@ var seed = Math.random();
 noise.seed(seed);
 
 var maxLife = 100;
-var lineCount = 1000;
+var lineCount = 10000;
 var linesAdded = Math.floor(lineCount/maxLife);
 
 lineCount = linesAdded*maxLife;
@@ -26,7 +26,7 @@ var offset = 0;
 lines = lines.map(Math.random);
 
 var pos = 0;
-var posIncrement = 0.0005;
+var posIncrement = 0.0001;
 
 var sin = Math.sin;
 var cos = Math.cos;
@@ -50,8 +50,7 @@ function addLines(){
 function render(){
 	
 	context.strokeStyle = "#FFFFFF";
-	context.lineWidth = 10;
-	context.lineCap = "round";
+	context.lineWidth = 0.8;
 
 	//context.clearRect(0, 0, width, height);
 	//context.fillStyle = "rgba(0, 0, 0, 0.001)";
@@ -74,9 +73,9 @@ function render(){
 	var crop = 50;
 	var baseLength = 10;
 	
+	context.beginPath();
+	
 	for(var i = 0; i < lines.length; i += 2){
-		
-		context.beginPath();
 		
 		x = lines[i] * (width+2*crop) - crop;
 		y = lines[i+1] * (height+2*crop) - crop;
@@ -124,16 +123,15 @@ function render(){
 		context.moveTo(x-dx, y-dy);
 		context.lineTo(x+dx, y+dy);
 		
-		var speed = 1.5;
+		var speed = 0.7;
 		
 		lines[i]   += s / width * speed;
 		lines[i+1] += c / height * speed;
-		
-		s = (s+1)/2;
-		
-		context.strokeStyle = "rgb("+(s*255)+", "+(s*255)+", "+(s*255)+")";
-		context.stroke();
 	}
+	
+	context.strokeStyle = "rgb("+(s*255)+", "+(s*255)+", "+(s*255)+")";
+	
+	context.stroke();
 	
 }
 
