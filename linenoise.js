@@ -131,7 +131,7 @@ function render(){
 		
 		s = (s+1)/2;
 		
-		context.strokeStyle = "rgb("+(s*255)+", "+(s*255)+", "+(s*255)+")";
+		context.strokeStyle = "rgba("+(s*255)+", "+(s*255)+", "+(s*255)+", 0.1)";
 		context.stroke();
 	}
 	
